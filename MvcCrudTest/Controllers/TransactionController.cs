@@ -64,46 +64,19 @@ namespace MvcCrudTest.Controllers
 
 
 
-        // GET: Transaction/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Transactions == null)
-            {
-                return NotFound();
-            }
-
-            var transaction = await _context.Transactions
-                .FirstOrDefaultAsync(m => m.TransactionId == id);
-            if (transaction == null)
-            {
-                return NotFound();
-            }
-
-            return View(transaction);
-        }
-
         // POST: Transaction/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Transactions == null)
-            {
-                return Problem("Entity set 'TransactionDbContext.Transactions'  is null.");
-            }
+
             var transaction = await _context.Transactions.FindAsync(id);
-            if (transaction != null)
-            {
-                _context.Transactions.Remove(transaction);
-            }
+            _context.Transactions.Remove(transaction);
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TransactionExists(int id)
-        {
-            return (_context.Transactions?.Any(e => e.TransactionId == id)).GetValueOrDefault();
-        }
+
     }
 }
