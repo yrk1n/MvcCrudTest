@@ -39,7 +39,7 @@ namespace MvcCrudTest.Models
 
         public int Amount { get; set; }
 
-
+        [DisplayFormat(DataFormatString = "{0:MMM-dd-yy}")]
         public DateTime Date { get; set; }
     }
 }
