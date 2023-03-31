@@ -12,20 +12,30 @@ namespace MvcCrudTest.Models
 
         [Column(TypeName = "varchar(12)")]
         [DisplayName("Account Number")]
+        [Required(ErrorMessage = "This field is required.")]
+        [MaxLength(12, ErrorMessage = "Account number must be 12 digits.")]
         public string AccountNumber { get; set; }
 
         [Column(TypeName = "varchar(100)")]
         [DisplayName("Beneficiary Name")]
+        [Required(ErrorMessage = "This field is required.")]
+
         public string BeneficiaryName { get; set; }
 
         [Column(TypeName = "varchar(100)")]
         [DisplayName("Bank Name")]
+        [Required(ErrorMessage = "This field is required.")]
+
         public string BankName { get; set; }
 
         [Column(TypeName = "varchar(11)")]
         [DisplayName("SWIFT Code")]
+        [Required(ErrorMessage = "This field is required.")]
+        [MaxLength(11, ErrorMessage = "Swift code number must be 11 digits.")]
+
         public string SWIFTCode { get; set; }
 
+        [Required(ErrorMessage = "This field is required.")]
 
         public int Amount { get; set; }
 
